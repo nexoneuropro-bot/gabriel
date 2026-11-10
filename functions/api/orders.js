@@ -7,8 +7,8 @@ export async function onRequestPost({request,env}){
  if(!String(request.headers.get("content-type")||"").includes("application/json"))return err("Content-Type deve ser JSON.",415);
  let p;try{const t=await request.text();if(t.length>12000)return err("Pedido muito grande.",413);p=JSON.parse(t)}catch{return err("JSON inválido.")}
  if(p.website)return json({ok:true,ignored:true}); // anti-robô
- const doc=normalizeDocument(p.document),type=documentType(doc);
- if(!type)return err("CPF/CNPJ inválido.");
+ const doc=normalizeDocument(p.document),type=doc?documentType(doc):null;
+ if(doc&&!type)return err("CPF/CNPJ inválido. Deixe em branco se preferir.");
  const name=String(p.name||"").trim().replace(/\s+/g," ").slice(0,100);
  const phone=String(p.phone||"").replace(/\D/g,"").replace(/^55(?=\d{10,11}$)/,"");
  if(name.length<2||!/^.{2,100}$/.test(name))return err("Informe nome ou razão social.");
@@ -29,17 +29,30 @@ export async function onRequestPost({request,env}){
  if(!Number.isInteger(cents)||cents<0)return err("Valor inválido.");
  const fulfillment=String(p.fulfillment||"").startsWith("Retirada")?"retirada":"entrega";
  const meal=String(p.meal||"").slice(0,60);
+ const address=fulfillment==="entrega"?{
+  cep:String(p.address?.cep||"").replace(/\D/g,""),
+  street:String(p.address?.street||"").trim().slice(0,130),
+  number:String(p.address?.number||"").trim().slice(0,25),
+  complement:String(p.address?.complement||"").trim().slice(0,110),
+  neighborhood:String(p.address?.neighborhood||"").trim().slice(0,100),
+  city:String(p.address?.city||"").trim().slice(0,100),
+  state:String(p.address?.state||"").trim().toUpperCase().slice(0,2),
+  reference:String(p.address?.reference||"").trim().slice(0,160)
+ }:null;
+ if(fulfillment==="entrega"&&(
+  !/^\d{8}$/.test(address.cep)||address.street.length<3||
+  !address.number||address.neighborhood.length<2||address.city.length<2||
+  !/^[A-Z]{2}$/.test(address.state)
+ ))return err("Informe o endereço completo para entrega: CEP, rua, número, bairro, cidade e UF.");
  const offers=p.offers_opt_in===true?1:0;
- let hash;try{hash=await docHash(doc,env.CUSTOMER_HASH_KEY)}catch{return err("Serviço temporariamente indisponível.",503)}
+ let hash;try{hash=await docHash("TELEFONE"+phone,env.CUSTOMER_HASH_KEY)}catch{return err("Serviço temporariamente indisponível.",503)}
  try{
   await ensureSchema(env.DB);
-  const previous=await env.DB.prepare("SELECT o.id FROM orders o JOIN customers c ON c.id=o.customer_id WHERE c.doc_hash=? AND o.created_at > datetime('now','-15 minutes') ORDER BY o.created_at DESC LIMIT 1").bind(hash).first();
-  if(previous)return err("Já existe um pedido recente para este cadastro. Aguarde a confirmação da Nutricomp ou use o WhatsApp.",429);
-  const customer=await env.DB.prepare("INSERT INTO customers(doc_hash,doc_type,doc_last4,name,phone,offers_opt_in) VALUES(?,?,?,?,?,?) ON CONFLICT(doc_hash) DO UPDATE SET name=excluded.name,phone=excluded.phone,offers_opt_in=excluded.offers_opt_in,updated_at=CURRENT_TIMESTAMP RETURNING id").bind(hash,type,doc.slice(-4),name,phone,offers).first();
+  const customer=await env.DB.prepare("INSERT INTO customers(doc_hash,doc_type,doc_last4,name,phone,offers_opt_in) VALUES(?,?,?,?,?,?) ON CONFLICT(doc_hash) DO UPDATE SET name=excluded.name,phone=excluded.phone,offers_opt_in=excluded.offers_opt_in,updated_at=CURRENT_TIMESTAMP RETURNING id").bind(hash,type||"Não informado",doc?doc.slice(-4):"",name,phone,offers).first();
   if(!customer?.id)return err("Cadastro indisponível.",503);
   const orderId="NC-"+crypto.randomUUID().split("-")[0].toUpperCase();
-  await env.DB.prepare("INSERT INTO orders(id,request_id,customer_id,package_qty,total_cents,dish_items,fulfillment,meal,status,payment) VALUES(?,?,?,?,?,?,?,?,?,?)")
-  .bind(orderId,requestId,customer.id,q,cents,JSON.stringify(items),fulfillment,meal,"solicitado","na_entrega").run();
+  await env.DB.prepare("INSERT INTO orders(id,request_id,customer_id,package_qty,total_cents,dish_items,fulfillment,meal,status,payment,address_json) VALUES(?,?,?,?,?,?,?,?,?,?,?)")
+  .bind(orderId,requestId,customer.id,q,cents,JSON.stringify(items),fulfillment,meal,"solicitado","na_entrega",address?JSON.stringify(address):null).run();
   return json({ok:true,order_id:orderId,total_cents:cents,payment:"na_entrega",status:"solicitado"},201);
  }catch(e){return err("Falha temporária no registro do pedido. Não tente enviar repetidamente; entre em contato pelo WhatsApp.",503)}
 }
