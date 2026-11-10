@@ -1,7 +1,7 @@
 // Nutricomp · infraestrutura de pedidos (Cloudflare Pages Functions + D1).
 // CPF/CNPJ é opcional. A chave de cliente é HMAC do telefone, nunca documento obrigatório.
 export const PRICES={10:22000,20:38000,30:51000};
-export const DISH_CODES=new Set(["1","2.1","4","8","9","10.1","14.1","16","1.1","2","4.1","8.1","9.1","11","14","15","16.1","17","18","19","20","21"]);
+export const DISH_CODES=new Set(["1","2.1","4","8","9","10.1","14.1","16","1.1","2","4.1","8.1","9.1","11","14","15","16.1","12","17","18","19","20","21"]);
 export const SEAFOOD=new Set(["17","18","19","20","21"]);
 export function normalizeDocument(v){return String(v||"").toUpperCase().replace(/[^0-9A-Z]/g,"")}
 function same(v){return /^([0-9A-Z])\1+$/.test(v)}
