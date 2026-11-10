@@ -101,7 +101,7 @@ footer a{color:#eed3a6}
 @media(max-width:640px){.top .wrap{min-height:74px}.brand strong{font-size:19px}.nav .text{display:none}.hero .wrap{padding:37px 0}.hero h1{font-size:44px}.hero p{font-size:15px}.cardgrid,.choicegrid,.recipegrid{grid-template-columns:1fr 1fr;gap:10px}.qty-card{padding:16px}.qty-card strong{font-size:38px}.qty-card .money{font-size:24px}.cardgrid .qty-card.main{grid-column:1 / -1}.choicegrid .profile{min-height:145px;padding:14px}.order-preview{grid-template-columns:1fr}.bench{min-height:135px}.bench svg{height:130px}.panel{padding:20px;border-radius:21px}.stepTitle{font-size:31px}.recipe{padding:11px;gap:8px;flex-wrap:wrap}.recipe .count{font-size:16px}.recipe strong{font-size:11px}}
 @media(max-width:375px){.choicegrid,.recipegrid{grid-template-columns:1fr}.qty-card .per{font-size:12px}.backrow .btn{width:100%}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.bench svg{animation:none}*,*:before,*:after{transition:none!important;animation:none!important}}
-</style>
+.steps-label span.completed{color:#287447;font-weight:800}.steps-label span.completed:before{content:"✓ ";color:#297c4e}.profile.active{background:#e4f1e2;border-color:#b48043;box-shadow:0 0 0 2px #c99d633a}.profile:focus-visible,.qty-card:focus-visible{outline:3px solid #b87539;outline-offset:3px}.panel:focus-within{scroll-margin-top:14px}@media(prefers-reduced-motion:reduce){.qty-card:hover,.profile:hover{transform:none}}</style>
 </head>
 <body>
 <a class="skip" href="#main">Pular para a escolha de marmitas</a>
@@ -110,7 +110,7 @@ footer a{color:#eed3a6}
 <nav class="nav" aria-label="Navegação"><a class="text" href="/#cardapio">Cardápio</a><a class="text" href="/#pacotes">Combos</a><a class="home" href="/">Voltar ao site</a></nav>
 </div></header>
 <section class="hero" aria-labelledby="pageTitle"><div class="wrap">
-<div><div class="eyebrow">NUTRICOMP · ESCOLHA ASSISTIDA</div><h1 id="pageTitle">A gente te ajuda a <em>escolher bem.</em></h1><p>Seu combo em três decisões simples. A gente organiza os pratos; você fica com o melhor da escolha.</p><div class="short"><span>Porções de 350 g</span><span>3 etapas</span><span>Poucas receitas por combo</span></div></div>
+<div><div class="eyebrow">NUTRICOMP · ESCOLHA ASSISTIDA</div><h1 id="pageTitle">A gente te ajuda a <em>escolher bem.</em></h1><p>Seu combo em três etapas simples. A gente organiza os pratos; você fica com o melhor da escolha.</p><div class="short"><span>Porções de 350 g</span><span>3 etapas</span><span>Poucas receitas por combo</span></div></div>
 <div class="kitchen-scene" aria-hidden="true">
 <svg viewBox="0 0 420 320" xmlns="http://www.w3.org/2000/svg" fill="none"><ellipse cx="226" cy="269" rx="164" ry="30" fill="#001b1388"/>
 <rect x="67" y="42" width="294" height="222" rx="39" fill="#263b2e" stroke="#b98e58" stroke-width="6"/>
@@ -191,10 +191,10 @@ const names={
 };
 const profiles={
 variedade:{name:"Variedade sem exagero",recipes:["14","4.1","14.1","2","1","15"],note:"Receitas de frango e patinho com acompanhamentos variados. Sua cozinha recebe menos variedade de preparações por pedido."},
-treino:{name:"Para sua rotina de treino",recipes:["14","14.1","4.1","8.1"],note:"Pratos com fontes de proteína. Sem fichas técnicas completas, não afirmamos qual tem mais gramas de proteína."},
-massa:{name:"Fontes de proteína e acompanhamentos",recipes:["14.1","4","2","9"],note:"Pratos com fontes de proteína e acompanhamentos. Não substitui uma estratégia individual de ganho de massa."},
-jantar:{name:"Praticidade para o jantar",recipes:["15","16.1","14","1.1"],note:"Preparações escolhidas pela praticidade, não por suposto menor valor calórico."},
-leve:{name:"Uma combinação pela composição",recipes:["14","4.1","14.1","2"],note:"A seleção usa ingredientes descritos; não existe comprovação de que tenha menos calorias."}
+treino:{name:"Para sua rotina de treino",recipes:["14","14.1","4.1","8.1","1.1","15"],note:"Pratos com fontes de proteína. Sem fichas técnicas completas, não afirmamos qual tem mais gramas de proteína."},
+massa:{name:"Fontes de proteína e acompanhamentos",recipes:["14.1","4","2","9","8.1","1.1"],note:"Pratos com fontes de proteína e acompanhamentos. Não substitui uma estratégia individual de ganho de massa."},
+jantar:{name:"Praticidade para o jantar",recipes:["15","16.1","14","1.1","4.1","2"],note:"Preparações escolhidas pela praticidade, não por suposto menor valor calórico."},
+leve:{name:"Uma combinação pela composição",recipes:["14","4.1","14.1","2","8.1","15"],note:"A seleção usa ingredientes descritos; não existe comprovação de que tenha menos calorias."}
 };
 const reviewMessages={
 lowcarb:{title:"Low carb precisa de um ajuste de cardápio.",text:"Receitas do catálogo atual incluem arroz, massas ou purês. Para uma composição realmente reduzida em carboidratos, a equipe precisa confirmar substituições e disponibilidade."},
@@ -207,8 +207,8 @@ function show(step){
  state.step=step;
  for(let i=1;i<=3;i++)$("step"+i).hidden=i!==step;
  $("progress").value=step;
- document.querySelectorAll("[data-label]").forEach(n=>n.classList.toggle("current",Number(n.dataset.label)===step));
- const announce=["","Etapa 1 de 3: escolha quantas marmitas deseja.","Etapa 2 de 3: escolha seu foco.","Etapa 3 de 3: revise a sugestão de pratos."][step];
+ document.querySelectorAll("[data-label]").forEach(n=>{const i=Number(n.dataset.label);n.classList.toggle("current",i===step);n.classList.toggle("completed",i<step)});
+ const announce=step===1?"Etapa 1 de 3. Escolha seu combo.":step===2?"Boa escolha! Seu combo de "+state.qty+" marmitas foi definido. Agora escolha seu foco.":"Sua seleção está pronta para revisão. Etapa 3 de 3.";
  $("stepAnnounce").textContent=announce;
  const title=$("title"+step);
  title.focus({preventScroll:true});
@@ -252,7 +252,7 @@ function review(profile){
 }
 document.querySelectorAll("[data-qty]").forEach(b=>b.addEventListener("click",()=>{
 state.qty=Number(b.dataset.qty);
-$("qtyReminder").textContent="Combo de "+state.qty+" marmitas selecionado.";
+$("qtyReminder").textContent="Boa escolha! "+state.qty+" marmitas selecionadas. Agora só falta escolher seu foco.";
 show(2);
 }));
 document.querySelectorAll("[data-profile]").forEach(b=>b.addEventListener("click",()=>{
@@ -270,7 +270,12 @@ $("apply").onclick=()=>{
  window.location.href="/?"+params.toString();
 };
 const given=new URLSearchParams(window.location.search).get("perfil");
-if(given&&profiles[given]){state.profile=given;} // entry remains at quantity step for clarity
+if(given&&document.querySelector('[data-profile="'+given+'"]')){
+ state.profile=given;
+ const item=document.querySelector('[data-profile="'+given+'"]');
+ item.classList.add("active");
+ item.setAttribute("aria-label",(item.querySelector("strong")?.textContent||"Preferência")+" sugerida pela página anterior. Toque para confirmar.");
+}
 })();
 </script>
 </body>
