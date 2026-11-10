@@ -285,7 +285,7 @@ document.querySelectorAll('input[name="paymentOption"]').forEach(i=>i.addEventLi
 function summary(){return "Olá, Nutricomp! Gostaria de confirmar um pedido de "+state.qty+" marmitas de 350 g.\n"+
 "Modalidade: "+(combo()?"Combo":"Avulsas")+"\nPratos:\n"+selectedText()+"\n"+
 "Seleção: "+state.goal+"\nNome: "+el("name").value.trim()+"\nWhatsApp: "+el("customerPhone").value.trim()+"\nRecebimento: "+el("delivery").value+"\n"+
-"Endereço: "+formatAddress()+"\nValor do pedido: "+money(price())+" (frete por distância e disponibilidade a confirmar)\nPagamento: "+(paymentOption()==="pix_antecipado"?"PIX antecipado, aguardando conferência do comprovante":"No recebimento")+"\nSolicito confirmação da entrega e do valor final."}
+"Endereço: "+formatAddress()+"\nValor do pedido: "+money(price())+" (frete por distância e disponibilidade a confirmar)\nPagamento: "+(paymentOption()==="pix_antecipado"?"PIX antecipado, aguardando conferência do comprovante":"No recebimento")+"\nComunicações comerciais: "+(el("optOffers").checked?"Autorizo receber ofertas relacionadas aos meus pratos preferidos por WhatsApp.":"Não solicito mensagens promocionais.")+"\nSolicito confirmação da entrega e do valor final."}
 function toggleAddress(){el("deliveryAddress").hidden=!deliveryChosen();el("customerZip").required=deliveryChosen()}
 async function lookupZip(){const input=el("customerZip"),zip=input.value.replace(/\D/g,""),status=el("zipStatus");if(!/^\d{8}$/.test(zip)){status.textContent="Informe um CEP de 8 dígitos. Você pode completar o endereço manualmente.";return}
 input.value=zip.slice(0,5)+"-"+zip.slice(5);status.textContent="Buscando endereço…";el("lookupZip").disabled=true;
