@@ -168,15 +168,17 @@ msg.classList.remove("ok");el("copy").classList.add("hidden");
 if(!validSelection()){msg.textContent="Antes de continuar, complete a seleção de marmitas.";return}
 if(name.length<2){msg.textContent="Informe um nome ou razão social.";el("name").focus();return}
 if(doc&&!type){msg.textContent="O CPF/CNPJ informado é inválido. Você pode corrigir ou deixar em branco.";el("doc").focus();return}
-if(!/^\d{10,13}$/.test(phone)){msg.textContent="Informe um WhatsApp com DDD válido.";el("customerPhone").focus();return}
+const normalizedPhone=phone.length>11&&phone.startsWith("55")?phone.slice(2):phone;if(!/^\d{10,11}$/.test(normalizedPhone)){msg.textContent="Informe um WhatsApp com DDD válido.";el("customerPhone").focus();return}
 if(!addressValid()){msg.textContent="Confira o endereço: CEP, rua, número, bairro, cidade e UF são necessários para entrega.";el("customerZip").focus();return}
 msg.textContent="Verificando disponibilidade do registro seguro...";
 const items=codes.filter(d=>state.chosen[d[0]]).map(d=>({code:d[0],quantity:state.chosen[d[0]]}));
 try{
 const response=await fetch("/api/orders",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({request_id:crypto.randomUUID(),name,document:doc,phone,items,quantity:state.qty,meal:state.meal,fulfillment:el("delivery").value,address:deliveryChosen()?addressInfo():null,offers_opt_in:el("optOffers").checked,website:el("website").value})});
-if(response.ok){const v=await response.json();msg.classList.add("ok");msg.textContent="✓ Pedido registrado! Protocolo "+v.order_id+". Pagamento somente no recebimento.";el("copy").classList.remove("hidden");return;}
+if(response.ok){const v=await response.json();msg.classList.add("ok");msg.textContent="Pedido recebido no sistema com protocolo "+v.order_id+". Pagamento somente no recebimento. Nossa equipe confirmará disponibilidade e frete.";el("copy").classList.remove("hidden");return;}
+const feedback=await response.json().catch(()=>({error:"Não foi possível concluir o pedido."}));
+if(response.status!==503){msg.textContent=feedback.error||"Confira as informações e tente novamente.";return}
 }catch(err){}
-msg.classList.add("ok");msg.textContent="O registro automático ainda não está disponível. O pedido não foi salvo. Você pode encaminhar o resumo pelo WhatsApp; CPF/CNPJ não será incluído.";
+msg.textContent="O registro automático ainda não está disponível. O pedido não foi salvo. Você pode encaminhar o resumo pelo WhatsApp; CPF/CNPJ não será incluído.";
 el("copy").classList.remove("hidden");
 };
 el("copy").onclick=()=>{if(addressValid())openWhatsApp();else{el("msg").textContent="Preencha o endereço antes de continuar.";el("customerZip").focus()}};
