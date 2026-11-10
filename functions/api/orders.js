@@ -1,6 +1,6 @@
 import {PRICES,DISH_CODES,SEAFOOD,normalizeDocument,documentType,docHash,ensureSchema,json,sameOrigin,configured} from "../_lib/model.js";
 const err=(message,status=400)=>json({ok:false,error:message},status);
-export async function onRequestGet({env}){return json({online:configured(env),payment:"no_recebimento",storage:"D1",requires_config:!configured(env)})}
+export async function onRequestGet({env}){return json({online:configured(env),payment_options:["pix_antecipado","na_entrega"],storage:"D1",requires_config:!configured(env)})}
 export async function onRequestPost({request,env}){
  if(!sameOrigin(request))return err("Origem não autorizada.",403);
  if(!configured(env))return err("Registro de pedidos não configurado; use o WhatsApp.",503);
@@ -8,7 +8,8 @@ export async function onRequestPost({request,env}){
  let p;try{const t=await request.text();if(t.length>12000)return err("Pedido muito grande.",413);p=JSON.parse(t)}catch{return err("JSON inválido.")}
  if(p.website)return json({ok:true,ignored:true}); // anti-robô
  const doc=normalizeDocument(p.document),type=doc?documentType(doc):null;
- if(doc&&!type)return err("CPF/CNPJ inválido. Deixe em branco se preferir.");
+ const payment=p.payment==="pix_antecipado"?"pix_antecipado":"na_entrega";
+ if((payment==="na_entrega"&&!type)||(doc&&!type))return err(payment==="na_entrega"?"Informe CPF/CNPJ válido para pagamento no recebimento.":"CPF/CNPJ inválido.");
  const name=String(p.name||"").trim().replace(/\s+/g," ").slice(0,100);
  const phone=String(p.phone||"").replace(/\D/g,"").replace(/^55(?=\d{10,11}$)/,"");
  if(name.length<2||!/^.{2,100}$/.test(name))return err("Informe nome ou razão social.");
@@ -52,7 +53,7 @@ export async function onRequestPost({request,env}){
   if(!customer?.id)return err("Cadastro indisponível.",503);
   const orderId="NC-"+crypto.randomUUID().split("-")[0].toUpperCase();
   await env.DB.prepare("INSERT INTO orders(id,request_id,customer_id,package_qty,total_cents,dish_items,fulfillment,meal,status,payment,address_json) VALUES(?,?,?,?,?,?,?,?,?,?,?)")
-  .bind(orderId,requestId,customer.id,q,cents,JSON.stringify(items),fulfillment,meal,"solicitado","na_entrega",address?JSON.stringify(address):null).run();
-  return json({ok:true,order_id:orderId,total_cents:cents,payment:"na_entrega",status:"solicitado"},201);
+  .bind(orderId,requestId,customer.id,q,cents,JSON.stringify(items),fulfillment,meal,"solicitado",payment,address?JSON.stringify(address):null).run();
+  return json({ok:true,order_id:orderId,total_cents:cents,payment,status:"solicitado",payment_verified:false,delivery_fee_status:"a_confirmar"},201);
  }catch(e){return err("Falha temporária no registro do pedido. Não tente enviar repetidamente; entre em contato pelo WhatsApp.",503)}
 }
