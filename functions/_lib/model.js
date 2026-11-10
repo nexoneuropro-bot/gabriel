@@ -1,5 +1,5 @@
 // Nutricomp · infraestrutura de pedidos (Cloudflare Pages Functions + D1).
-// Nenhum CPF/CNPJ bruto é salvo: somente HMAC com chave privada no ambiente.
+// CPF/CNPJ é opcional. A chave de cliente é HMAC do telefone, nunca documento obrigatório.
 export const PRICES={10:22000,20:38000,30:51000};
 export const DISH_CODES=new Set(["1","2.1","4","8","9","10.1","14.1","16","1.1","2","4.1","8.1","9.1","11","14","15","16.1","17","18","19","20","21"]);
 export const SEAFOOD=new Set(["17","18","19","20","21"]);
@@ -18,6 +18,11 @@ export async function ensureSchema(db){
  db.prepare("CREATE INDEX IF NOT EXISTS idx_orders_customer ON orders(customer_id)"),
  db.prepare("CREATE INDEX IF NOT EXISTS idx_orders_created ON orders(created_at)")
  ]);
+ const columns=(await db.prepare("PRAGMA table_info(orders)").all()).results||[];
+ if(!columns.some(c=>c.name==="address_json")){
+  try{await db.prepare("ALTER TABLE orders ADD COLUMN address_json TEXT").run()}
+  catch(error){if(!String(error).toLowerCase().includes("duplicate column"))throw error}
+ }
 }
 export function sameOrigin(request){const origin=request.headers.get("origin");return !origin||origin===new URL(request.url).origin}
 export function configured(env){return Boolean(env?.DB&&env?.CUSTOMER_HASH_KEY&&env.CUSTOMER_HASH_KEY.length>=24)}
