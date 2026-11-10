@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,follow">
+<meta name="theme-color" content="#092b1c">
+<title>Me ajude a escolher | Nutricomp · Marmitas de 350 g</title>
+<meta name="description" content="Escolha seu combo Nutricomp de 10, 20 ou 30 marmitas e receba uma sugestão de pratos organizada para sua rotina.">
+<meta property="og:title" content="Me ajude a escolher · Nutricomp">
+<meta property="og:description" content="Em poucos cliques, descubra um combo com receitas selecionadas para sua rotina.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#092b1c;--green:#134731;--light:#e3eddb;--cream:#f9f6ed;--gold:#e8bb79;--copper:#d37a35;--ink:#13382a;--muted:#62786b}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--cream);color:var(--ink);font:16px/1.5 "DM Sans",system-ui,sans-serif}
+button,a{font:inherit}button{cursor:pointer}a{color:inherit}button:focus-visible,a:focus-visible{outline:3px solid #f4b65d;outline-offset:3px}
+[hidden]{display:none!important}
+.skip{position:absolute;top:-90px;left:15px;padding:12px;background:#fff;z-index:99}.skip:focus{top:10px}
+.top{background:#092b1c;color:#f8f4e8;border-bottom:1px solid #d4b97965}
+.wrap{width:min(1130px,calc(100% - 40px));margin:auto}
+.top .wrap{min-height:86px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{text-decoration:none;display:flex;gap:12px;align-items:center}.brand-icon{width:48px;height:48px;border:1px solid #d3ac70;border-radius:15px;display:grid;place-items:center;transform:rotate(-8deg)}.brand-icon svg{width:27px;height:27px;transform:rotate(8deg)}.brand strong{display:block;font:800 24px Manrope,sans-serif;letter-spacing:-.07em}.brand small{display:block;color:#d8cbab;font-size:10px;letter-spacing:.18em}
+.nav{display:flex;gap:21px;align-items:center}.nav a{text-decoration:none;font-size:13px;font-weight:700}.nav a:hover{text-decoration:underline}
+.nav .home{padding:10px 16px;border:1px solid #ccab71;border-radius:999px}
+.hero{background:radial-gradient(ellipse at 75% 45%,#35704b70 0,transparent 48%),linear-gradient(115deg,#0a2919,#153a25);color:#f8f6ea;position:relative;overflow:hidden}
+.hero:before{content:"";position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(115deg,transparent,transparent 80px,#ffffff08 81px,transparent 82px)}
+.hero .wrap{position:relative;display:grid;grid-template-columns:1.12fr .88fr;gap:34px;align-items:center;padding-top:47px;padding-bottom:47px}
+.eyebrow{font-size:11px;text-transform:uppercase;font-weight:800;letter-spacing:.16em;color:#dfb674}
+.hero h1{font:700 clamp(40px,5.2vw,72px)/1.06 Georgia,serif;letter-spacing:-.035em;margin:12px 0 20px;max-width:690px}
+.hero h1 em{font-style:normal;color:#f2bf7f}
+.hero p{font-size:17px;max-width:590px;color:#e2e9d9;margin:0}
+.hero .short{display:flex;flex-wrap:wrap;gap:12px;margin-top:21px}
+.hero .short span{border:1px solid #d2b57b8a;border-radius:100px;padding:7px 12px;font-weight:700;font-size:12px;color:#f2e9cf}
+.kitchen-scene{min-height:285px;display:grid;place-items:center;position:relative}
+.kitchen-scene svg{width:min(100%,420px);height:auto;filter:drop-shadow(0 15px 35px #071c16a0)}
+.scene-caption{position:absolute;right:0;bottom:-10px;background:#b47137;color:#fff6e7;padding:11px 15px;border-radius:12px;font-size:12px;font-weight:800;box-shadow:0 12px 25px #09251980}
+.wizard{padding:42px 0 85px}
+.progress-head{display:flex;gap:20px;justify-content:space-between;align-items:end;flex-wrap:wrap;margin:0 0 20px}
+.progress-head p{margin:0;font-size:13px;color:#536d5e;font-weight:700}
+progress{display:block;width:100%;height:9px;border:0;border-radius:999px;overflow:hidden;accent-color:var(--copper)}
+progress::-webkit-progress-bar{background:#e3e7dd}progress::-webkit-progress-value{background:linear-gradient(90deg,#9c6636,#e3a959)}
+.steps-label{display:flex;justify-content:space-between;font-size:12px;color:#617366;gap:8px;margin-top:9px}
+.steps-label span.current{font-weight:800;color:#225037}
+.panel{background:#fffdf8;border:1px solid #e6e5d8;border-radius:28px;box-shadow:0 18px 50px #173d2612;padding:clamp(22px,3.5vw,45px);margin-top:25px}
+.stepTitle{font:800 clamp(27px,3.8vw,45px)/1.12 Manrope,sans-serif;letter-spacing:-.055em;margin:0 0 12px}
+.stepIntro{color:#5e7264;margin:0 0 29px;font-size:15px;max-width:760px}
+.stepId{display:inline-block;text-transform:uppercase;font-weight:800;letter-spacing:.13em;font-size:11px;color:#ad6b33;margin-bottom:12px}
+.cardgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.qty-card,.profile{appearance:none;text-align:left;border:2px solid #dfe8db;color:var(--ink);background:#f9fbf7;border-radius:19px;padding:22px;transition:transform .18s ease,background .18s,border-color .18s;min-width:0}
+.qty-card:hover,.profile:hover{border-color:#c89857;transform:translateY(-3px)}
+.qty-card.main{background:linear-gradient(145deg,#0e3b27,#245b3e);color:#fff;border-color:#d4ac6d;box-shadow:0 12px 35px #13412b27}
+.qty-card strong{display:block;font:800 clamp(36px,5vw,55px) Manrope,sans-serif;letter-spacing:-.06em;line-height:1}
+.qty-card .k{font:800 11px Manrope,sans-serif;letter-spacing:.1em;text-transform:uppercase;display:block;margin-bottom:14px;color:#b27845}
+.qty-card.main .k{color:#edc18b}
+.qty-card .money{display:block;font:800 28px Manrope,sans-serif;letter-spacing:-.05em;margin:14px 0 2px}
+.qty-card .per{display:block;font-size:13px;opacity:.78}
+.qty-card .desc{display:block;margin-top:16px;font-size:12px;line-height:1.6;opacity:.8}
+.qty-card.main .money{color:#ffe0b1}
+.smallnote{margin-top:17px;color:#62756a;font-size:12px}
+.choicegrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.profile{min-height:155px;padding:17px;display:flex;flex-direction:column;gap:8px}
+.profile svg{width:32px;height:32px;color:#b3773c}
+.profile strong{font-size:15px;line-height:1.35}
+.profile small{font-size:11px;color:#6b806f;line-height:1.45}
+.profile.manual{background:#f4efe5;border-color:#e7d8c0}
+.profile.active{background:#e8f1e5;border-color:#be8c47}
+.choice-banner{margin-top:22px;background:#f5f0e5;border:1px solid #eadcc5;border-radius:15px;padding:16px;display:flex;align-items:flex-start;gap:12px;font-size:13px;color:#5a5d4d}
+.choice-banner svg{color:#b37b40;flex:none;width:23px;height:23px}
+.btn{display:inline-flex;gap:9px;align-items:center;justify-content:center;min-height:48px;background:#19503a;color:#fff;text-decoration:none;border:0;border-radius:999px;padding:12px 21px;font-size:14px;font-weight:800}
+.btn svg{width:19px;height:19px}.btn:hover{background:#276747}
+.btn.primary{background:linear-gradient(135deg,#b95822,#e18b3e);color:#fff9e8;box-shadow:0 8px 17px #9a472829}
+.btn.secondary{border:1px solid #cbdccc;color:#164631;background:#fff}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.backrow{display:flex;gap:12px;align-items:center;justify-content:space-between;margin-top:23px;flex-wrap:wrap}
+.backrow a{font-size:13px;color:#376247;text-decoration:underline}
+.recipegrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:20px 0 24px}
+.recipe{display:flex;align-items:center;gap:13px;background:#f3f7f0;border:1px solid #d9e5d4;border-radius:15px;padding:14px}
+.recipe .code{font:800 14px Manrope,sans-serif;background:#ddebd5;color:#22573a;padding:10px;border-radius:9px;min-width:44px;text-align:center}
+.recipe strong{font-size:12px;line-height:1.4;display:block}.recipe .count{font:800 19px Manrope,sans-serif;color:#ab6937;margin-left:auto;white-space:nowrap}
+.order-preview{display:grid;grid-template-columns:1fr 240px;gap:16px;align-items:stretch}
+.orderbox{background:#113e29;color:#fff;border-radius:20px;padding:25px}
+.orderbox .sub{font-size:12px;letter-spacing:.12em;color:#e3bc86;font-weight:800;text-transform:uppercase}
+.orderbox strong{font:800 43px Manrope,sans-serif;letter-spacing:-.05em;display:block;margin:5px 0}
+.orderbox p{font-size:12px;color:#d0e2d5;margin:0}
+.orderbox small{color:#f0d3a5;display:block;margin-top:12px}
+.bench{border:1px solid #d8e6d1;background:radial-gradient(circle at 50% 50%,#ebf0e4,#d8e3d4);border-radius:20px;display:grid;place-items:center;min-height:170px;overflow:hidden}
+.bench svg{width:180px;height:160px;animation:appear .5s ease}
+@keyframes appear{from{transform:scale(.88);opacity:.6}to{transform:scale(1);opacity:1}}
+.result-message{margin-top:16px;font-size:14px;line-height:1.65;color:#4a6153}
+.helpbox{background:#f3eee3;border:1px solid #e9d6b7;border-radius:16px;padding:19px;margin:15px 0;line-height:1.65;color:#5c4c35}
+.helpbox strong{color:#764820}
+.whatsapp-link{display:inline-flex;align-items:center;gap:9px;text-decoration:none;color:#fff;background:#15633f;padding:13px 17px;border-radius:999px;font-weight:800}
+footer{padding:27px 0 45px;background:#092b1c;color:#d1e3d6;font-size:12px}
+footer .wrap{display:flex;gap:20px;justify-content:space-between;flex-wrap:wrap}
+footer a{color:#eed3a6}
+@media(max-width:900px){.hero .wrap{grid-template-columns:1fr}.kitchen-scene{max-height:210px;min-height:180px}.kitchen-scene svg{max-height:205px}.scene-caption{bottom:-12px}.choicegrid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:640px){.top .wrap{min-height:74px}.brand strong{font-size:19px}.nav .text{display:none}.hero .wrap{padding:37px 0}.hero h1{font-size:44px}.hero p{font-size:15px}.cardgrid,.choicegrid,.recipegrid{grid-template-columns:1fr 1fr;gap:10px}.qty-card{padding:16px}.qty-card strong{font-size:38px}.qty-card .money{font-size:24px}.cardgrid .qty-card.main{grid-column:1 / -1}.choicegrid .profile{min-height:145px;padding:14px}.order-preview{grid-template-columns:1fr}.bench{min-height:135px}.bench svg{height:130px}.panel{padding:20px;border-radius:21px}.stepTitle{font-size:31px}.recipe{padding:11px;gap:8px;flex-wrap:wrap}.recipe .count{font-size:16px}.recipe strong{font-size:11px}}
+@media(max-width:375px){.choicegrid,.recipegrid{grid-template-columns:1fr}.qty-card .per{font-size:12px}.backrow .btn{width:100%}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.bench svg{animation:none}*,*:before,*:after{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Pular para a escolha de marmitas</a>
+<header class="top"><div class="wrap">
+<a class="brand" href="/"><span class="brand-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#d5b175" stroke-width="1.5" aria-hidden="true"><path d="M4 21c1-10 8-17 17-18-1 12-7 18-17 18Z"/><path d="M4 21c6-9 10-12 14-14"/></svg></span><span><strong>NUTRICOMP</strong><small>COMIDA DE VERDADE</small></span></a>
+<nav class="nav" aria-label="Navegação"><a class="text" href="/#cardapio">Cardápio</a><a class="text" href="/#pacotes">Combos</a><a class="home" href="/">Voltar ao site</a></nav>
+</div></header>
+<section class="hero" aria-labelledby="pageTitle"><div class="wrap">
+<div><div class="eyebrow">NUTRICOMP · ESCOLHA ASSISTIDA</div><h1 id="pageTitle">A gente te ajuda a <em>escolher bem.</em></h1><p>Seu combo em três decisões simples. A gente organiza os pratos; você fica com o melhor da escolha.</p><div class="short"><span>Porções de 350 g</span><span>3 etapas</span><span>Poucas receitas por combo</span></div></div>
+<div class="kitchen-scene" aria-hidden="true">
+<svg viewBox="0 0 420 320" xmlns="http://www.w3.org/2000/svg" fill="none"><ellipse cx="226" cy="269" rx="164" ry="30" fill="#001b1388"/>
+<rect x="67" y="42" width="294" height="222" rx="39" fill="#263b2e" stroke="#b98e58" stroke-width="6"/>
+<rect x="85" y="60" width="258" height="185" rx="27" fill="#e6d6b9"/>
+<path d="M104 146c0-37 30-62 68-62s72 28 72 65-27 64-69 64-71-27-71-67Z" fill="#f4efd9"/>
+<path d="M121 130c20-28 64-37 98 1M122 160c34-20 72-17 90 0M129 177c30 18 52 10 75-8" stroke="#d8cba6" stroke-width="9" stroke-linecap="round"/>
+<path d="M259 72c35-6 67 17 63 49-4 30-35 46-63 28-25-16-26-66 0-77Z" fill="#4c9d49"/>
+<path d="M275 76c18 11 20 38 6 65M291 77c20 15 21 37 9 52M262 96c26 0 42 20 46 33" stroke="#a0c87d" stroke-width="8" stroke-linecap="round"/>
+<path d="M246 184c17-25 62-34 82-13 10 11 6 33-13 47-22 17-58 11-72-4-7-8-5-19 3-30Z" fill="#d6773b"/>
+<path d="M253 187c16 7 23 19 50 20M264 177c20 9 34 10 47 9" stroke="#ffcb86" stroke-width="5" stroke-linecap="round"/>
+<circle cx="224" cy="89" r="12" fill="#ad4d2d"/><circle cx="232" cy="212" r="10" fill="#b84c2c"/>
+<g transform="translate(19 50) rotate(-11 25 30)" stroke="#ecc38b" stroke-width="4" stroke-linecap="round"><path d="M12 4v55M1 4v26q0 14 11 14 11 0 11-14V4M6 4v24M18 4v24"/></g>
+<g transform="translate(338 161) rotate(25 24 45)" stroke="#ecc38b" stroke-width="5" stroke-linecap="round"><path d="M22 45V8M11 17c0-11 23-11 23 0s-23 18-23 0Z"/></g>
+<circle cx="356" cy="54" r="28" fill="#bb7d3d" stroke="#edc78f" stroke-width="3"/><path d="m341 53 11 11 19-23" stroke="#fff1cf" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+</svg><span class="scene-caption">Contém afeto. Até na escolha.</span>
+</div></div></section>
+<main id="main" class="wizard"><div class="wrap">
+<div class="progress-head"><div><div class="eyebrow">SUA BANCADA DE ESCOLHAS</div><p id="stepAnnounce" role="status" aria-live="polite">Etapa 1 de 3: escolha o tamanho do combo.</p></div><a href="/#cardapio">Prefiro montar sozinho</a></div>
+<progress id="progress" max="3" value="1" aria-label="Etapa da escolha assistida"></progress>
+<div class="steps-label" aria-hidden="true"><span class="current" data-label="1">01 · Quantidade</span><span data-label="2">02 · Seu foco</span><span data-label="3">03 · Seu combo</span></div>
+<section id="step1" class="panel" aria-labelledby="title1">
+<div class="stepId">Etapa 01 / 03</div><h2 class="stepTitle" id="title1" tabindex="-1">Quantas marmitas vamos separar?</h2><p class="stepIntro">Primeiro escolhemos a quantidade. Depois montamos uma seleção que faz sentido para a sua rotina. Os combos são de 350 g.</p>
+<div class="cardgrid" role="group" aria-label="Escolha do combo">
+<button class="qty-card main" type="button" data-qty="30" aria-label="Escolher combo de 30 marmitas por 510 reais"><span class="k">Melhor custo por unidade</span><strong>30</strong><span class="money">R$ 510,00</span><span class="per">R$ 17,00 por marmita</span><span class="desc">Planeje mais refeições e tenha economia por unidade.</span></button>
+<button class="qty-card" type="button" data-qty="20" aria-label="Escolher combo de 20 marmitas por 380 reais"><span class="k">Rotina organizada</span><strong>20</strong><span class="money">R$ 380,00</span><span class="per">R$ 19,00 por marmita</span><span class="desc">Uma boa quantidade para manter suas refeições organizadas.</span></button>
+<button class="qty-card" type="button" data-qty="10" aria-label="Escolher combo de 10 marmitas por 220 reais"><span class="k">Para começar</span><strong>10</strong><span class="money">R$ 220,00</span><span class="per">R$ 22,00 por marmita</span><span class="desc">Uma forma prática de conhecer e repetir seus favoritos.</span></button>
+</div>
+<p class="smallnote">Você também pode montar avulsas de 1 a 9 unidades no <a href="/#pacotes">site principal</a>. Para porções maiores ou personalizadas, consulte a Nutricomp.</p>
+</section>
+<section id="step2" class="panel" aria-labelledby="title2" hidden>
+<div class="stepId">Etapa 02 / 03</div><h2 class="stepTitle" id="title2" tabindex="-1">Qual é o seu foco?</h2><p class="stepIntro"><strong id="qtyReminder">Combo de 20 selecionado.</strong> Toque na opção que mais combina com você. A seleção será preparada automaticamente.</p>
+<div class="choicegrid" id="profiles">
+<button type="button" class="profile" data-profile="variedade"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M4 12h16M12 4v16M7 7l10 10"/></svg><strong>Quero variadas</strong><small>Um pouco de cada categoria, sem exagerar na variedade.</small></button>
+<button type="button" class="profile" data-profile="treino"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="m4 7 13 13M3 11l8-8M13 21l8-8M2 8l6-6M16 22l6-6"/></svg><strong>Treino</strong><small>Receitas com fontes de proteína, sem estimar macros.</small></button>
+<button type="button" class="profile" data-profile="massa"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M4 20V9l5 3 3-8 3 8 5-3v11H4Z"/></svg><strong>Ganho de massa</strong><small>Pratos com fontes proteicas e acompanhamentos.</small></button>
+<button type="button" class="profile" data-profile="jantar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M20 15A8 8 0 0 1 9 4a8 8 0 1 0 11 11Z"/><path d="M16 4v4M14 6h4"/></svg><strong>Para o jantar</strong><small>Receitas práticas para a refeição da noite.</small></button>
+<button type="button" class="profile" data-profile="leve"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M4 20c1-9 6-15 16-16-1 11-6 16-16 16ZM5 20 17 8"/></svg><strong>Refeições leves</strong><small>Seleção por ingredientes, sem prometer menos calorias.</small></button>
+<button type="button" class="profile manual" data-profile="lowcarb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M3 12h18M6 7c4-4 8-4 12 0M6 17c4 4 8 4 12 0"/><path d="M15 3v18"/></svg><strong>Low carb</strong><small>Precisa conferir ingredientes e possíveis substituições.</small></button>
+<button type="button" class="profile manual" data-profile="vegetariano"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M12 22V10M12 12C6 12 4 9 4 4c6 0 8 2 8 8ZM12 15c0-7 3-10 9-10 0 6-3 10-9 10Z"/></svg><strong>Vegetariano</strong><small>Mais variedade vegetariana sujeita à confirmação do cardápio.</small></button>
+<button type="button" class="profile manual" data-profile="idoso"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="12" cy="6" r="3"/><path d="M5 22v-5c0-3 2-5 5-5h4c3 0 5 2 5 5v5M9 18h6"/></svg><strong>Pessoa idosa</strong><small>A textura deve considerar necessidades individuais.</small></button>
+</div>
+<div class="choice-banner"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 11v6M12 7h.01"/></svg><span>Estas sugestões usam descrições dos pratos, não valores laboratoriais de calorias ou proteínas. Para dietas terapêuticas e dificuldade de deglutição, a equipe deve avaliar a solicitação.</span></div>
+<div class="backrow"><button id="back2" class="btn secondary" type="button">Voltar para quantidade</button><a href="/#cardapio">Escolher tudo manualmente</a></div>
+</section>
+<section id="step3" class="panel" aria-labelledby="title3" hidden>
+<div class="stepId">Etapa 03 / 03</div><h2 class="stepTitle" id="title3" tabindex="-1">Sua seleção está pronta!</h2><p class="stepIntro" id="resultIntro">Preparamos uma combinação prática, com poucas receitas predominantes. Confira e ajuste o que quiser.</p>
+<div id="ready" hidden>
+<div class="order-preview"><div class="orderbox"><div class="sub">Seu combo Nutricomp</div><strong id="resultQty">20 marmitas</strong><p id="resultGoal">Variedade para o dia a dia</p><small id="resultPrice">R$ 380,00 · Porções de 350 g</small></div>
+<div class="bench" aria-hidden="true"><svg viewBox="0 0 190 160" xmlns="http://www.w3.org/2000/svg" fill="none"><ellipse cx="95" cy="137" rx="78" ry="13" fill="#243c2b22"/><rect x="20" y="15" width="150" height="120" rx="24" fill="#16432e" stroke="#bc9764" stroke-width="5"/><rect x="30" y="25" width="130" height="100" rx="18" fill="#efe3cb"/><path d="M40 60c0-18 15-28 35-28s36 10 36 29-15 30-35 30S40 79 40 60Z" fill="#fff5df"/><path d="M45 50h51M48 66h47M54 79h38" stroke="#e0d2b7" stroke-width="7" stroke-linecap="round"/><circle cx="133" cy="57" r="22" fill="#6ca64d"/><path d="M119 49c12 10 17 20 17 29M135 36c12 9 17 20 12 34" stroke="#a6ce80" stroke-width="5"/><path d="M93 105c18-24 48-26 60-5-6 21-34 28-57 20Z" fill="#d77739"/><path d="M108 103l29 10" stroke="#ffc284" stroke-width="5" stroke-linecap="round"/></svg></div></div>
+<div id="recipeRows" class="recipegrid"></div>
+<div class="choice-banner"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 7v6M12 17h.01"/></svg><span id="recipeNote">Sem a obrigação de pedir uma receita diferente para cada marmita. O cardápio final pode variar conforme disponibilidade.</span></div>
+<div class="backrow"><button id="apply" class="btn primary" type="button">Levar minha seleção para o pedido</button><button id="regenerate" class="btn secondary" type="button">Quero outra combinação</button></div>
+</div>
+<div id="review" hidden><div class="helpbox"><strong id="reviewTitle">Essa escolha precisa de confirmação.</strong><p id="reviewText">A equipe confirmará quais pratos estão disponíveis e se adaptações são necessárias.</p></div>
+<a id="requestQuote" class="whatsapp-link" target="_blank" rel="noopener noreferrer" href="https://wa.me/5511933944302">Conversar com a Nutricomp</a></div>
+<div class="backrow"><button id="back3" class="btn secondary" type="button">Voltar às preferências</button><a href="/#cardapio">Prefiro escolher prato a prato</a></div>
+</section>
+<noscript><p class="helpbox">Para usar a escolha automática, ative o JavaScript. Se preferir, <a href="/#pacotes">veja os combos</a> e faça a escolha manual.</p></noscript>
+</div></main>
+<footer><div class="wrap"><span>Nutricomp · Comida de verdade. Contém afeto.</span><span><a href="/privacidade/">Privacidade</a> · <a href="https://www.instagram.com/nutricaonutricomp/" target="_blank" rel="noopener noreferrer">Instagram</a> · <a href="https://wa.me/5511933944302" target="_blank" rel="noopener noreferrer">WhatsApp</a></span></div></footer>
+<script>
+(() => {
+"use strict";
+const $=id=>document.getElementById(id);
+const prices={10:220,20:380,30:510};
+const names={
+"1":"Almôndega de carne com macarrão integral",
+"1.1":"Almôndega de frango com macarrão integral",
+"2":"Frango com arroz 7 grãos e purê de mandioquinha",
+"4":"Burguer de patinho com arroz 7 grãos e legumes",
+"4.1":"Burguer de frango com arroz 7 grãos e legumes",
+"8.1":"Iscas de frango com arroz 7 grãos e lentilha",
+"9":"Escondidinho de batata doce com carne de patinho e arroz 7 grãos",
+"14":"Frango desfiado com arroz 7 grãos e legumes",
+"14.1":"Patinho desfiado com arroz 7 grãos e legumes",
+"15":"Frango em crosta com purê de mandioquinha",
+"16.1":"Panqueca integral com carne de frango"
+};
+const profiles={
+variedade:{name:"Variedade sem exagero",recipes:["14","4.1","14.1","2","1","15"],note:"Receitas de frango e patinho com acompanhamentos variados. Sua cozinha recebe menos variedade de preparações por pedido."},
+treino:{name:"Para sua rotina de treino",recipes:["14","14.1","4.1","8.1"],note:"Pratos com fontes de proteína. Sem fichas técnicas completas, não afirmamos qual tem mais gramas de proteína."},
+massa:{name:"Fontes de proteína e acompanhamentos",recipes:["14.1","4","2","9"],note:"Pratos com fontes de proteína e acompanhamentos. Não substitui uma estratégia individual de ganho de massa."},
+jantar:{name:"Praticidade para o jantar",recipes:["15","16.1","14","1.1"],note:"Preparações escolhidas pela praticidade, não por suposto menor valor calórico."},
+leve:{name:"Uma combinação pela composição",recipes:["14","4.1","14.1","2"],note:"A seleção usa ingredientes descritos; não existe comprovação de que tenha menos calorias."}
+};
+const reviewMessages={
+lowcarb:{title:"Low carb precisa de um ajuste de cardápio.",text:"Receitas do catálogo atual incluem arroz, massas ou purês. Para uma composição realmente reduzida em carboidratos, a equipe precisa confirmar substituições e disponibilidade."},
+vegetariano:{title:"Vamos confirmar as opções vegetarianas.",text:"O strogonoff de grão-de-bico está identificado no histórico, mas ainda precisamos confirmar a variedade vegetariana disponível para compor um combo completo."},
+idoso:{title:"Vamos considerar as necessidades dessa pessoa.",text:"A idade não define sozinha quais alimentos são apropriados. Se houver dificuldade para mastigar ou engolir, a textura precisa de avaliação individual; não recomendamos pratos como seguros contra engasgos."}
+};
+const state={step:1,qty:null,profile:null,variant:0,items:[]};
+const money=n=>new Intl.NumberFormat("pt-BR",{style:"currency",currency:"BRL"}).format(n);
+function show(step){
+ state.step=step;
+ for(let i=1;i<=3;i++)$("step"+i).hidden=i!==step;
+ $("progress").value=step;
+ document.querySelectorAll("[data-label]").forEach(n=>n.classList.toggle("current",Number(n.dataset.label)===step));
+ const announce=["","Etapa 1 de 3: escolha quantas marmitas deseja.","Etapa 2 de 3: escolha seu foco.","Etapa 3 de 3: revise a sugestão de pratos."][step];
+ $("stepAnnounce").textContent=announce;
+ const title=$("title"+step);
+ title.focus({preventScroll:true});
+ const reduced=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+ $("main").scrollIntoView({behavior:reduced?"auto":"smooth",block:"start"});
+}
+function mixCodes(profile,quantity,variant){
+ const source=profiles[profile].recipes;
+ const maxDistinct=quantity===10?3:quantity===20?4:5;
+ const n=Math.min(maxDistinct,source.length);
+ const rotated=[...source.slice(variant%source.length),...source.slice(0,variant%source.length)];
+ return rotated.slice(0,n);
+}
+function generate(){
+ const chosen=mixCodes(state.profile,state.qty,state.variant);
+ const items=Object.fromEntries(chosen.map(code=>[code,0]));
+ // Keep 3-5 distinct recipes, with a near-even distribution for kitchen planning.
+ for(let i=0;i<state.qty;i++)items[chosen[i%chosen.length]]++;
+ state.items=Object.entries(items).map(([code,quantity])=>({code,quantity}));
+ $("resultQty").textContent=state.qty+" marmitas";
+ $("resultGoal").textContent=profiles[state.profile].name;
+ $("resultPrice").textContent=money(prices[state.qty])+" · Porções de 350 g";
+ $("recipeRows").replaceChildren(...state.items.map(it=>{
+   const article=document.createElement("article");article.className="recipe";
+   const code=document.createElement("span");code.className="code";code.textContent=it.code;
+   const title=document.createElement("strong");title.textContent=names[it.code];
+   const number=document.createElement("span");number.className="count";number.textContent=it.quantity+"×";
+   article.append(code,title,number);return article;
+ }));
+ $("resultIntro").textContent="Uma proposta com "+state.items.length+" receitas predominantes, para facilitar sua escolha e a rotina da cozinha.";
+ $("recipeNote").textContent=profiles[state.profile].note+" Você poderá editar cada quantidade na página de pedido.";
+ $("ready").hidden=false;$("review").hidden=true;
+}
+function review(profile){
+ $("ready").hidden=true;$("review").hidden=false;
+ const detail=reviewMessages[profile];
+ $("resultIntro").textContent="Antes de montar automaticamente, precisamos confirmar os ingredientes e as opções disponíveis.";
+ $("reviewTitle").textContent=detail.title;$("reviewText").textContent=detail.text;
+ const request="Olá, Nutricomp! Quero ajuda para montar um combo de "+state.qty+" marmitas de 350 g. Meu foco é "+({"lowcarb":"low carb","vegetariano":"vegetariano","idoso":"refeições para uma pessoa idosa"}[profile])+". Podemos confirmar as receitas disponíveis?";
+ $("requestQuote").href="https://wa.me/5511933944302?text="+encodeURIComponent(request);
+}
+document.querySelectorAll("[data-qty]").forEach(b=>b.addEventListener("click",()=>{
+state.qty=Number(b.dataset.qty);
+$("qtyReminder").textContent="Combo de "+state.qty+" marmitas selecionado.";
+show(2);
+}));
+document.querySelectorAll("[data-profile]").forEach(b=>b.addEventListener("click",()=>{
+state.profile=b.dataset.profile;state.variant=0;
+if(profiles[state.profile])generate();else review(state.profile);
+show(3);
+}));
+$("back2").onclick=()=>show(1);
+$("back3").onclick=()=>show(2);
+$("regenerate").onclick=()=>{state.variant++;generate()};
+$("apply").onclick=()=>{
+ if(!state.qty||!profiles[state.profile]||state.items.reduce((s,it)=>s+it.quantity,0)!==state.qty)return;
+ const dishes=state.items.map(x=>x.code+":"+x.quantity).join(",");
+ const params=new URLSearchParams({combo:String(state.qty),pratos:dishes,perfil:profiles[state.profile].name,origem:"assistente"});
+ window.location.href="/?"+params.toString();
+};
+const given=new URLSearchParams(window.location.search).get("perfil");
+if(given&&profiles[given]){state.profile=given;} // entry remains at quantity step for clarity
+})();
+</script>
+</body>
+</html>
