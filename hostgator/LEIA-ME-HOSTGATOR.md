@@ -22,8 +22,8 @@ Envie o CONTEUDO desta pasta hostgator/ para a raiz do dominio na HostGator (tip
 - Cardapio, selecao e assistente em JavaScript; nenhum pagamento e feito pelo site.
 - O assistente encaminha o combo ja selecionado para a finalizacao na pagina principal.
 - CEP consulta ViaCEP via internet. O numero do endereco deve ser preenchido pelo cliente.
-- Pedido abre mensagem para WhatsApp; o cliente confirma o envio. Equipe confirma frete e disponibilidade.
-- CPF/CNPJ passa por checagem matematica quando solicitado, que NAO comprova titularidade.
+- Pedido abre mensagem para WhatsApp; o cliente confirma o envio. Equipe confirma frete, disponibilidade e pagamento. Nao existe registro automatico nem numero de pedido gravado.
+- CPF/CNPJ e opcional para PIX ou pagamento no recebimento. Quando preenchido, passa por checagem matematica, que NAO comprova titularidade. O documento nao entra na mensagem enviada pelo WhatsApp.
 
 ## Ainda NAO migrado
 A pasta functions/ do repositorio original implementa Cloudflare Pages Functions e D1. Nao funciona automaticamente na HostGator e nao faz parte deste pacote. Historico automatico de clientes e pedidos, painel administrativo e estimativa de distancia de rota exigem backend integrado e seguranca/LGPD, por exemplo PHP + MySQL ou sistema externo. O pedido pelo WhatsApp continua disponivel.
