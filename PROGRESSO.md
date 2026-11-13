@@ -23,7 +23,7 @@ Conforme o `README.md` da branch de prévia, esta base contém um site demonstra
 
 ### Verificações e limitações
 - **Verificado antes da alteração:** ambos os arquivos não existiam na raiz de `nutricomp-preview`.
-- **Verificação pendente:** comparar a branch de documentação com `nutricomp-preview` e confirmar que apenas os dois arquivos foram adicionados.
+- **Verificado por comparação de commits no GitHub:** em relação a `nutricomp-preview`, somente `AGENTS.md` e `PROGRESSO.md` foram adicionados; nenhum outro arquivo aparece alterado. A comparação não substitui execução de testes funcionais nem `git diff --check` em ambiente local.
 - **Não executado:** build, testes de interface, verificação de pedidos ou deploy. São desnecessários para esta mudança exclusivamente documental.
 
 ## Pendências para decidir em outra missão
