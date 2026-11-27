@@ -47,6 +47,10 @@ Máximo **2 pratos de frutos do mar por combo**, conforme regra operacional a co
 
 ## 3. Painel de gestão (MVP obrigatório, privado e seguro)
 
+**LEITURA OBRIGATÓRIA ANTES DE IMPLEMENTAR O BACKEND:** [Especificação operacional completa do Painel de Gestão](NUTRICOMP_PAINEL_GESTAO_COMPLETO.md). Este documento aprofunda a experiência de cada tela e o comportamento do sistema em mais de 40 fluxos, incluindo visão geral, filas/status de pedido, pagamento registrado manualmente, produção, frete, CRM, receitas, bloqueio em tempo real, promoções datadas, segurança, LGPD e critérios de aceite. **O painel é o núcleo operacional, não um recurso futuro.**
+
+**Mapa mínimo que o Codex deverá apresentar:** Visão geral | Pedidos | Cardápio | Promoções | Clientes, com acesso autenticado, interface premium responsiva, gravação no banco persistente e catálogo/preço/disponibilidade sincronizados com o site público. Ordem de execução por pequenas entregas está na especificação do painel.
+
 O painel é **para equipe Nutricomp**, não para cliente final. O cliente pode incluir/trocar/remover pratos dentro do pedido, mas não criar receitas no catálogo.
 
 ### Módulo A: solicitações e clientes
@@ -118,8 +122,8 @@ Objetivo: **fortalecer busca orgânica local em São Paulo para marmitas congela
 
 **O Codex deve trabalhar uma tarefa pequena por vez; entregar progresso verificável e parar. Não iniciar refatoração ampla nem explorar ferramentas sem necessidade.**
 
-### Sprint 0: auditoria + proposta premium/SEO (primeira entrega)
-Escopo fechado: (a) ler este arquivo e `nutricomp/AGENTS.md`; (b) comparar rapidamente código/produção; (c) criar **uma prévia navegável de home premium** em diretório isolado e screenshots mobile/desktop; (d) gerar auditoria SEO curta, ordenada por impacto. **Não mexer em checkout, banco, preço, ou domínio**. Critérios: hero completo, 30/20/10 com preço correto, imagens fiéis, CTA funcional, sem rolagem horizontal no celular; comparar antes/depois. Registrar em `docs/NUTRICOMP_PROGRESSO.md`.
+### Sprint 0: auditoria + proposta premium/SEO (prévia já entregue, validação visual pendente)
+A primeira prévia navegável e uma auditoria SEO já constam em [docs/nutricomp-sprint-0/](nutricomp-sprint-0/README.md). **Não refazer esse trabalho do zero**. Escopo remanescente: revisar a prévia, obter screenshots reais mobile/desktop, verificar navegação responsiva e propor melhorias somente onde necessárias. **Não mexer em checkout, banco, preço, ou domínio**. Critérios: hero completo, 30/20/10 com preço correto, imagens fiéis, CTA funcional, sem rolagem horizontal no celular; comparar antes/depois. Registrar em `docs/NUTRICOMP_PROGRESSO.md`.
 
 ### Sprint 1: pedidos e distância
 Uma PR separada, com API testada: pedido idempotente registrado no SQLite fora da raiz pública, admin com login, status de pedido, km aproximado etiquetado como linha reta e WhatsApp como fallback. Testar com dados fictícios e comprovar `pdo_sqlite` antes de considerar deploy. Nenhum pedido real deve ser disparado nos testes.
@@ -134,7 +138,7 @@ Somente com autorização explícita, backup/rollback documentado, teste em `/nu
 
 ## 8. Mensagem de arranque pronta para o Codex
 
-> Leia este documento inteiro. Trabalhe na branch `codex-nutricomp-handoff-2026` e comece **somente pela Sprint 0**. Não use credenciais, serviços pagos, nem altere a HostGator. Mostre uma **home premium e mais persuasiva** que respeite nossa referência original, com prévia navegável e duas capturas, além de 5 a 10 prioridades SEO reais. Não prometa primeiro lugar no Google. Preserve as regras 350 g, preços 30/20/10 e fluxo de pedido existente. Ao fim, registre o que foi feito em `docs/NUTRICOMP_PROGRESSO.md`, testes e um único próximo passo. **Evite desperdiçar o saldo do Codex.**
+> Leia este documento inteiro, a [especificação do painel](NUTRICOMP_PAINEL_GESTAO_COMPLETO.md) e o progresso real em [Sprint 0](nutricomp-sprint-0/README.md). Trabalhe na branch `codex-nutricomp-handoff-2026`. A Sprint 0 já tem prévia e auditoria; termine **somente as validações visuais pendentes** antes de iniciar a Sprint 1A do painel. Não use credenciais, serviços pagos, nem altere a HostGator. Mostre uma **home premium e mais persuasiva** que respeite nossa referência original, com prévia navegável e duas capturas, além de 5 a 10 prioridades SEO reais. Não prometa primeiro lugar no Google. Preserve as regras 350 g, preços 30/20/10 e fluxo de pedido existente. Ao fim, registre o que foi feito em `docs/NUTRICOMP_PROGRESSO.md`, testes e um único próximo passo. **Evite desperdiçar o saldo do Codex.**
 
 ## 9. Segurança, publicação e critérios de aceite
 
