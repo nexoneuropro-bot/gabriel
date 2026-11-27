@@ -3,7 +3,7 @@
 
 > **Objetivo:** a cozinha acessa um link fácil, encontra rapidamente um pedido pelo **número público aleatório** ou **nome** e atualiza apenas as etapas que cabem à produção. O responsável/atendimento vê as mesmas atualizações em tempo real no painel de gestão. O cliente não recebe acesso ao painel de cozinha.
 
-## 1. Experiência que queremos
+**Avisos ao cliente:** toda mudança de status gravada pode gerar e-mail automático e acompanhamento privado, ou mensagem de WhatsApp preparada para envio humano. Leia [notificações ao cliente](NUTRICOMP_NOTIFICACOES_CLIENTE.md). O envio WhatsApp 100% automático depende de integração oficial e aprovação de custos; não supor que wa.me envia sozinho. O trabalho da cozinha nunca deve falhar porque um e-mail falhou.\n\n## 1. Experiência que queremos
 
 **Link de equipe sugerido:** \`https://www.nutricomp.com.br/cozinha/\` (**proposta, não está publicado**). Atalho salvo na tela inicial do celular/tablet da cozinha. A interface abre no login e em seguida numa **única tela operacional**, sem gráficos de faturamento ou configurações financeiras.
 
