@@ -2,7 +2,7 @@
 
 **Criado em 27/11/2026.** Este arquivo é o checkpoint para economizar saldo e evitar recontar histórico.
 
-## Estado de referência
+- [x] Especificado [portal da cozinha e rastreamento](NUTRICOMP_COZINHA_RASTREIO_PEDIDOS.md) (ainda não implementado).\n- [x] Especificadas [notificações por e-mail/WhatsApp e link privado de status](NUTRICOMP_NOTIFICACOES_CLIENTE.md) (ainda não implementadas).\n- [ ] Implementar após backend seguro: portal cozinha → aviso por e-mail/fila + rastreio privado → WhatsApp assistido. Automação oficial WhatsApp só após autorização de custos.\n\n## Estado de referência
 
 - [x] Especificação funcional detalhada do **painel de gestão**: [NUTRICOMP_PAINEL_GESTAO_COMPLETO.md](NUTRICOMP_PAINEL_GESTAO_COMPLETO.md).
 - [ ] Planejar implementação do painel **em tarefas curtas**: autenticação/pedidos → cardápio/disponibilidade → promoções → clientes/produção/logística → publicação segura.
