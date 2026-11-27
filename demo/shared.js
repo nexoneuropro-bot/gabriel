@@ -1,0 +1,3 @@
+function nav(base=''){return `<aside class="demo-switch"><strong>Demonstração · dados fictícios</strong><nav aria-label="Percorrer demonstração"><a href="${base}index.html">Vitrine</a><a href="${base}gestao/index.html">Gestão</a><a href="${base}cozinha/index.html">Cozinha</a><a href="${base}pedido/acompanhar/index.html">Acompanhar pedido</a></nav><small>Simulação neste navegador. Sem pedidos ou mensagens reais.</small></aside>`;}
+function message(text){const el=document.getElementById('feedback');el.textContent=text;el.hidden=false;el.focus();}
+function code(){const a=new Uint8Array(8);crypto.getRandomValues(a);return 'NC-'+Array.from(a,x=>'ABCDEFGHJKLMNPQRSTUVWXYZ23456789'[x%32]).join('');}
