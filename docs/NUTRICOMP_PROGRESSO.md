@@ -8,7 +8,7 @@
 - [x] Regras de segurança para edições em `nutricomp/` e `hostgator/`.
 - [x] Site oficial Nutricomp publicado e checkout WhatsApp validado manualmente pelo proprietário.
 - [ ] Confirmar qual commit corresponde ao código da produção. **A branch original não é espelho confirmado da HostGator.**
-- [ ] Sprint 0: auditar home, produzir prévia premium com imagem de comida ao fundo + versões desktop/mobile + auditoria SEO.
+- [x] Sprint 0: prévia premium, auditoria SEO e capturas desktop/mobile entregues; aprovação comercial pendente.
 - [ ] Sprint 1: implementar e testar histórico de pedidos e km estimado na HostGator com banco privado.
 - [ ] Sprint 2: cadastrar/bloquear pratos e campanhas promocionais no painel com validação no servidor.
 - [ ] Sprint 3: backup, instalação controlada, reversão e validação em produção.
@@ -40,7 +40,10 @@ Uma sprint pequena por sessão. **Não implementar a próxima sprint sem valida�
 - Objetivo: revisar a home e priorizar SEO antes de editar produção.
 - Arquivos: `docs/nutricomp-sprint-0/previa.html`, `docs/nutricomp-sprint-0/README.md` e este registro.
 - Prévia e relatório: [Sprint 0](nutricomp-sprint-0/README.md). Prévia autônoma responsiva, com fotos públicas e finalização simulada. Nenhuma publicação.
-- Testes: GETs públicos, comparação SHA-256, sintaxe JS e lógica de preços, seleção manual/assistida, resumo sem documentos e âncoras com DOM simulado.
-- Pendências: encaminhamento de porta expirou e navegador bloqueou arquivo local. Capturas e validação visual pendentes. ZIP administrativo segue fora do GitHub.
-- Próxima ação única: validar a prévia em desktop e celular e registrar as duas capturas.
+- Testes iniciais: GETs públicos, comparação SHA-256, sintaxe JS e lógica de preços, seleção manual/assistida, resumo sem documentos e âncoras com DOM simulado.
+- Continuação em 27/11/2026: revisão no navegador em 360/390/768/1440 px, sem rolagem horizontal da página. Hero, menu móvel, combos, assistente e resumo simulado revisados. Capturas [desktop](nutricomp-sprint-0/captura-desktop.jpg) e [celular](nutricomp-sprint-0/captura-mobile.jpg) registradas.
+- Correções isoladas na prévia: foco mantido nos ajustes de quantidade e perfil, foco no título ao avançar etapas, contato flutuante oculto até 830 px para não cobrir controles.
+- Aceite funcional observado: R$ 220/380/510 para 10/20/30, limite de dois peixes, 30 unidades sugeridas preservadas no resumo, marketing desmarcado e mensagem apenas local com dados fictícios. Skip link, Tab no assistente, Escape e retorno do foco verificados; noindex mantido. `node --check` passou.
+- Pendências: aprovação da prévia; Lighthouse/Search Console e auditoria completa de acessibilidade não executados. ZIP administrativo segue fora do GitHub e commit de produção não identificado. Nada enviado à HostGator.
+- Próxima ação única: responsável Nutricomp aprovar ou apontar ajustes nesta prévia antes de iniciar a Sprint 1.
 - Entrega: commit nesta branch de handoff.

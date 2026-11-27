@@ -4,6 +4,16 @@
 
 Baixe [previa.html](previa.html) pelo botão **Download raw file** do GitHub e abra o arquivo no navegador. O mesmo arquivo se adapta ao computador e ao celular. As fotografias são carregadas do domínio oficial. Use dados fictícios para montar um combo, avançar pelo assistente e visualizar a mensagem de pedido na página. Os controles de WhatsApp e a busca externa por CEP estão em modo de demonstração.
 
+### Capturas e revisão visual · 27/11/2026
+
+Prévia revisada no navegador nas larguras 360, 390, 768 e 1440 px. A página não apresentou rolagem horizontal; a faixa de perfis conserva sua rolagem interna no celular. O contato flutuante foi ocultado até 830 px para não cobrir os controles; o contato continua disponível no rodapé. Também foi corrigida a perda de foco ao ajustar pratos e escolher um perfil no assistente.
+
+[Captura desktop · 1440 × 1000](captura-desktop.jpg) · [Captura celular · 390 × 844](captura-mobile.jpg)
+
+![Home desktop](captura-desktop.jpg)
+
+<img src="captura-mobile.jpg" alt="Home Nutricomp no celular, com foto, oferta de 30 marmitas e botões livres de sobreposição" width="390">
+
 ### Antes e depois
 
 - **Home de referência pública.** Abre com “Comer bem. Viver leve.”, sobreposição verde mais densa, oferta em um bloco fechado e três colunas de combos de mesma largura. O catálogo visível depende de JavaScript.
@@ -32,5 +42,7 @@ Fontes públicas: [área de teste](https://www.nutricomp.com.br/nutricomp-novo/)
 
 - GET público para raiz, variantes de domínio, área de teste, gestão, robots, sitemap, privacidade e imagens referenciadas. Comparação SHA-256 de raiz e área de teste.
 - `node --check` no JavaScript. Teste em Node com DOM simulado para 30/20/10, todos os perfis de sugestão, ajuste manual com limite de dois pescados, resumo de 350 g sem documentos nem opt-in por padrão, âncoras e noindex. Nenhuma mensagem enviada.
-- O encaminhamento da porta do ambiente expirou e a abertura de arquivo local foi bloqueada pela política do navegador. Capturas desktop/celular, larguras 360/390/768/1440, foco, sobreposição e rolagem horizontal permanecem sem verificação visual. Lighthouse e Search Console também seguem pendentes.
-- Próxima ação única: validar a prévia em desktop e celular e registrar as duas capturas para aprovação.
+- Continuação de 27/11/2026: prévia servida localmente e revisada no navegador em 360/390/768/1440 px. Em cada largura, `scrollWidth` da raiz foi igual a `clientWidth`. Revisados hero, menu móvel, combos, sugestão e finalização simulada. Capturas acima obtidas da prévia corrigida.
+- Navegador: combos 10/20/30 com R$ 220/R$ 380/R$ 510; limite de dois peixes; sugestão com 30 unidades conservada no resumo; opt-in desmarcado; mensagem exibida apenas na página com dados fictícios. Teclado: skip link com foco visível, Tab dentro do assistente, Escape fecha e devolve foco. Foco preservado no perfil e nos steppers, inclusive ao chegar a zero ou ao limite. `noindex,nofollow` conferido. `node --check` passou após as correções.
+- Limites: revisão visual e funcional da prévia, sem auditoria completa WCAG, Lighthouse, Search Console ou backend real. Fotos ainda dependem do domínio oficial. O commit de produção e o ZIP administrativo continuam sem recuperação; a HostGator não foi alterada.
+- Próxima ação única: responsável Nutricomp aprovar ou apontar ajustes na prévia da Sprint 0 antes de iniciar a Sprint 1.
