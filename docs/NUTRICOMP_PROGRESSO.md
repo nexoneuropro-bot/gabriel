@@ -34,3 +34,13 @@ Uma sprint pequena por sessão. **Não implementar a próxima sprint sem valida�
 - Painel com login e dados guardados fora da raiz web; histórico de confirmados diferente de solicitações.
 - 360 e 390 px sem rolagem lateral, foco de teclado, sem sobreposição de botões.
 - SEO técnico sem indexar painel/preview e sem dados inventados.
+
+## Sprint 0 | 27/11/2026 · Entrega para revisão
+
+- Objetivo: revisar a home e priorizar SEO antes de editar produção.
+- Arquivos: `docs/nutricomp-sprint-0/previa.html`, `docs/nutricomp-sprint-0/README.md` e este registro.
+- Prévia e relatório: [Sprint 0](nutricomp-sprint-0/README.md). Prévia autônoma responsiva, com fotos públicas e finalização simulada. Nenhuma publicação.
+- Testes: GETs públicos, comparação SHA-256, sintaxe JS e lógica de preços, seleção manual/assistida, resumo sem documentos e âncoras com DOM simulado.
+- Pendências: encaminhamento de porta expirou e navegador bloqueou arquivo local. Capturas e validação visual pendentes. ZIP administrativo segue fora do GitHub.
+- Próxima ação única: validar a prévia em desktop e celular e registrar as duas capturas.
+- Entrega: commit nesta branch de handoff.
