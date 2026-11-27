@@ -4,6 +4,9 @@
 
 ## Estado de referência
 
+- [x] Especificação funcional detalhada do **painel de gestão**: [NUTRICOMP_PAINEL_GESTAO_COMPLETO.md](NUTRICOMP_PAINEL_GESTAO_COMPLETO.md).
+- [ ] Planejar implementação do painel **em tarefas curtas**: autenticação/pedidos → cardápio/disponibilidade → promoções → clientes/produção/logística → publicação segura.
+
 - [x] Briefing consolidado no GitHub.
 - [x] Regras de segurança para edições em `nutricomp/` e `hostgator/`.
 - [x] Site oficial Nutricomp publicado e checkout WhatsApp validado manualmente pelo proprietário.
