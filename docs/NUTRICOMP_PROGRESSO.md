@@ -50,3 +50,13 @@ Uma sprint pequena por sessão. **Não implementar a próxima sprint sem valida�
 - Pendências: aprovação da prévia; Lighthouse/Search Console e auditoria completa de acessibilidade não executados. ZIP administrativo segue fora do GitHub e commit de produção não identificado. Nada enviado à HostGator.
 - Próxima ação única: responsável Nutricomp aprovar ou apontar ajustes nesta prévia antes de iniciar a Sprint 1.
 - Entrega: commit nesta branch de handoff.
+
+## Demonstração integrada | 27/11/2026
+
+- Ordem única atendida com reaproveitamento da Sprint 0: home, gestão, cozinha e acompanhamento em `demo/`, sem backend de produção.
+- [Entrega, links e roteiro de teste](NUTRICOMP_DEMO_INTEGRADA.md). Dados fictícios, alterações somente no navegador e nenhum envio de mensagens.
+- Testes: `node --check`, `node test-demo.cjs` e fluxos no navegador: cadastro de receita, assistente/checkout local, quatro etapas da cozinha, aviso simulado e promoção de R$30 refletida na vitrine. Capturas reais desktop/mobile incluídas.
+- Limites: autenticação, APIs, SQLite/SMTP e validação HostGator ainda não implementados/comprovados. Produção intacta. Não confundir a demonstração estática publicada com um painel operacional.
+- Próxima única ação: aprovar ou ajustar a demonstração integrada antes do backend real.
+
+- Prévia pública: https://nutricomp-demonstracao-2026.contato-ellobordados.chatgpt.site/ · publicação estática isolada via Sites, sem alterar o domínio oficial.

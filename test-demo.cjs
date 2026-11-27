@@ -1,0 +1,12 @@
+const assert=require('node:assert/strict'),vm=require('node:vm'),fs=require('node:fs');
+const D=require('./demo/core.js'),sandbox={window:{}};vm.runInNewContext(fs.readFileSync(__dirname+'/demo/catalog.js','utf8'),sandbox);
+const s=D.initial(JSON.parse(JSON.stringify(sandbox.window.NC_CATALOG)));
+assert.equal(s.orders.length,2);assert.equal(s.orders.filter(o=>o.commercial==='confirmado').length,1);
+assert.equal(D.cents('30,25'),3025);assert.throws(()=>D.cents('-1'));assert.throws(()=>D.cents('1.234'));
+const t=Date.parse('2026-11-27T12:00:00-03:00');s.promotions.push({title:'Teste',combo:30,type:'money',value:3000,start:new Date(t).toISOString(),end:new Date(t+3600000).toISOString(),active:true});
+assert.equal(D.offer(s,30,t-1).total,51000);assert.equal(D.offer(s,30,t).total,48000);assert.equal(D.offer(s,30,t+3600000).total,51000);s.promotions[0].type='percent';s.promotions[0].value=1000;assert.equal(D.offer(s,30,t).total,45900);
+const o={key:'teste-idempotente',id:'NC-TESTE01',name:'Pessoa Demo',combo:10,items:[{code:'2',name:'Frango demonstrativo',qty:10}],delivery:'retirada',marketing:false};
+const saved=D.addOrder(s,o);assert.equal(D.addOrder(s,o).id,saved.id);assert.equal(s.orders.filter(x=>x.key===o.key).length,1);assert.equal(saved.financial,'pendente');assert.throws(()=>D.advance(s,o.id));
+s.catalog.find(d=>d.code==='2').active=false;assert.throws(()=>D.confirm(s,o.id));assert.equal(saved.commercial,'solicitacao');s.catalog.find(d=>d.code==='2').active=true;D.confirm(s,o.id);
+for(let i=0;i<4;i++)D.advance(s,o.id);assert.equal(saved.kitchen,4);assert.equal(saved.financial,'pendente');assert.throws(()=>D.advance(s,o.id));assert.equal(saved.events.length,6);
+console.log('PASS: centavos, vigência, desconto %, idempotência, bloqueio, confirmação, sequência cozinha e pagamento separado.');
