@@ -1,5 +1,8 @@
 # Nutricomp | Handoff completo para Codex parceiro (27/11/2026)
 
+> **INSTRUÇÃO ÚNICA ATUALIZADA:** [Abrir a ordem única para Codex: site premium + SEO + painel + cozinha + avisos + prévia online](NUTRICOMP_ORDEM_UNICA_CODEX.md). Esta ordem concentra a execução e a economia de saldo; use-a como entrada principal. O briefing abaixo continua como referência.
+
+
 > **Comece aqui.** Este é o ponto único de entrada para retomar a Nutricomp com **mínimo consumo de créditos**, sem pedir ao responsável para recontar o projeto. A documentação e o código de referência estão neste repositório. **Não instale, não sobrescreva produção e não contrate serviços pagos sem aprovação.**
 
 ## 1. Endereços e estado real
