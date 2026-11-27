@@ -1,7 +1,7 @@
 # Regras de trabalho do Codex: Nutricomp
 
-1. Leia primeiro [briefing completo](../docs/NUTRICOMP_CODEX_BRIEFING_COMPLETO.md), [contrato técnico](../docs/NUTRICOMP_CONTRATO_TECNICO.md) e [registro de progresso](../docs/NUTRICOMP_PROGRESSO.md).
-2. **Uma sprint por chamada.** Comece pela Sprint 0, exclusivamente revisão premium e SEO, com prévia isolada. Sem alteração de produção, DNS, pagamento, infraestrutura, banco ou APIs nesta primeira sprint.
+1. Leia primeiro [briefing completo](../docs/NUTRICOMP_CODEX_BRIEFING_COMPLETO.md), [contrato técnico](../docs/NUTRICOMP_CONTRATO_TECNICO.md) [painel de gestão completo](../docs/NUTRICOMP_PAINEL_GESTAO_COMPLETO.md) e [registro de progresso](../docs/NUTRICOMP_PROGRESSO.md).
+2. **Uma sprint por chamada.** A Sprint 0 já tem prévia e auditoria em docs/nutricomp-sprint-0; conclua a validação visual pendente, sem refazer do zero. Depois siga Sprint 1A (painel básico), 1B (cardápio), 1C (promoções), 1D (clientes/logística), uma por vez. Sem alteração de produção, DNS, pagamento, infraestrutura, banco ou APIs nesta primeira sprint.
 3. O site **https://www.nutricomp.com.br/** é produção. O código nesta branch é legado de referência, não presumir equivalência com produção. Não substituir a raiz da HostGator sem autorização nova e backup verificável.
 4. Economia de tokens e créditos: inspecione somente os arquivos relevantes, escreva uma hipótese e critérios de aceite antes de editar, use dependências existentes e mudanças mínimas. Evite pesquisas ou varreduras repetidas, reescritas totais e mudanças de stack.
 5. Todas as regras comerciais devem permanecer corretas: 350 g; 30 por R$17/un (R$510); 20 por R$19/un (R$380); 10 por R$22/un (R$220); avulsa tradicional R$25; frutos do mar avulso R$50; no máximo 2 frutos do mar/combo sob regra de confirmação.
