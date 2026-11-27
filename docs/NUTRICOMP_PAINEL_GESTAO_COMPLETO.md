@@ -5,7 +5,7 @@
 >
 > **ESTADO ATUAL:** o site público funciona e o envio para WhatsApp foi testado pelo proprietário. A página /gestao/ retornou 404 na verificação pública de 27/11/2026. Existe pacote PHP/SQLite de protótipo fora do GitHub, mas a instalação e persistência na HostGator **não foram confirmadas**. Este documento descreve o comportamento desejado, não uma funcionalidade já publicada.
 
-## 1. Resultado esperado e princípios de operação
+**Complementos operacionais obrigatórios:** [Portal simplificado da cozinha, busca e status por pedido](NUTRICOMP_COZINHA_RASTREIO_PEDIDOS.md) e [Notificações e acompanhamento privado do cliente](NUTRICOMP_NOTIFICACOES_CLIENTE.md). Ao alterar pedido/status pelo painel ou cozinha, registrar evento e enfileirar aviso conforme canal realmente habilitado, sem enviar promoções. Cozinha não tem acesso a contatos completos.\n\n## 1. Resultado esperado e princípios de operação
 
 1. **Uma operação simples e visual**, utilizável pela cozinha/atendimento no celular e no computador. Evitar aparência de sistema corporativo complexo. Priorizar poucos cliques, campos claros, linguagem comum e atalhos úteis.
 2. **Fonte única da verdade:** alterações feitas pela equipe no painel devem atualizar automaticamente o cardápio, a busca, as recomendações, os preços promocionais e o checkout no site, sem republicação manual.
